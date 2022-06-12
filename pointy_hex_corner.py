@@ -29,7 +29,7 @@ class Hexagon:
         return Point(self.c.x + self.s * math.cos(angle_rad), self.c.y + self.s * math.sin(angle_rad))
 
     # Calculate all the corners of the hexagon
-    def draw_out(self):
+    def points(self):
         x,y=[],[]
         for i in range(1,8):
             x.append(self.corner(i).x)
@@ -70,44 +70,44 @@ ix,iy,size=1,1,3
 # Center Hexagon
 p1 = Point(ix,iy)
 hex1 = Hexagon(p1,size)
-x,y = hex1.draw_out()
+x,y = hex1.points()
 plt.plot(x,y,color='blue')
 
 # Top Right Hexagon
 p2 = hex1.top_right_hex_center()
 hex2 = Hexagon(p2,size)
-x2,y2 = hex2.draw_out()
+x2,y2 = hex2.points()
 plt.plot(x2,y2,color='red')
 
 # Right Hexagon
 p3 = hex1.right_hex_center()
 hex3 = Hexagon(p3,size)
-x3,y3 = hex3.draw_out()
+x3,y3 = hex3.points()
 plt.plot(x3,y3,color='green')
 
 # Bottom Right Hexagon
 p4 = hex1.bottom_right_hex_center()
 hex4 = Hexagon(p4,size)
-x4,y4 = hex4.draw_out()
+x4,y4 = hex4.points()
 plt.plot(x4,y4,color='yellow')
 
 # Bottom Left Hexagon
 p5 = hex1.bottom_left_hex_center()
 hex5 = Hexagon(p5,size)
-x5,y5 = hex5.draw_out()
+x5,y5 = hex5.points()
 plt.plot(x5,y5,color='orange')
 
 # Left Hexagon
 # p6 = Point(ix-(math.sqrt(3)*size),iy)
 p6 = hex1.left_hex_center()
 hex6 = Hexagon(p6,size)
-x6,y6 = hex6.draw_out()
+x6,y6 = hex6.points()
 plt.plot(x6,y6,color='purple')
 
 # Top Left Hexagon
 p7 = hex1.top_left_hex_center()
 hex7 = Hexagon(p7,size)
-x7,y7 = hex7.draw_out()
+x7,y7 = hex7.points()
 plt.plot(x7,y7,color='black')
 
 
