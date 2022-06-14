@@ -77,5 +77,24 @@ class Hexagon:
     
     def __str__(self):
         return 'Hexagon({c},{p})'.format(c=self.c,p=self.points())
+    def __repr__(self):
+        return self.__str__()
 
+class HexagonGrid:
+    def __init__(self,x,y,size,t):
+        self.x=x
+        self.y=y
+        self.size=size
+        self.t=t
+        self.hexagons=[]
+        self.create_hexagons()
 
+    def create_hexagons(self):
+        for i in range(self.x):
+            self.hexagons.append([])
+            for j in range(self.y):
+                p = self.hexagons[i][j-1].right_hex_center() if j>0 else Point(i,j)
+                self.hexagons[i].append(Hexagon(p,self.size,self.t))
+
+    def __getitem__(self,i):
+        return self.hexagons[i]
